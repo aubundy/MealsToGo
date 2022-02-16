@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { RestaurantsNavigator } from "./restaurants";
 import { MapScreen } from "../../screens/Map/MapScreen";
-// import { SettingsNavigator } from "./settings";
+import { SettingsNavigator } from "./settings";
 // import { CheckoutNavigator } from "./checkout";
 import { CartContextProvider } from "../../contexts/Cart";
 import { RestaurantsContextProvider } from "../../contexts/Restaurants";
@@ -48,7 +48,7 @@ export const AppNavigator = () => (
             <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
             <Tab.Screen name="Map" component={MapScreen} />
             {/* <Tab.Screen name="Checkout" component={CheckoutNavigator} /> */}
-            {/* <Tab.Screen name="Settings" component={SettingsNavigator} /> */}
+            <Tab.Screen name="Settings" component={SettingsNavigator} />
           </Tab.Navigator>
         </CartContextProvider>
       </RestaurantsContextProvider>

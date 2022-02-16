@@ -20,7 +20,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     }
   });
 
-  const handleLogin = (email, password) => {
+  const onLogin = (email, password) => {
     setIsLoading(true);
     loginRequest(email, password)
       .then((u) => {
@@ -33,7 +33,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
-  const handleRegister = (email, password, repeatedPassword) => {
+  const onRegister = (email, password, repeatedPassword) => {
     setIsLoading(true);
     if (password !== repeatedPassword) {
       setError("Error: Passwords do not match");
@@ -52,7 +52,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
-  const handleLogout = () => {
+  const onLogout = () => {
     firebase
       .auth()
       .signOut()
@@ -69,9 +69,9 @@ export const AuthenticationContextProvider = ({ children }) => {
         user,
         isLoading,
         error,
-        handleLogin,
-        handleRegister,
-        handleLogout,
+        onLogin,
+        onRegister,
+        onLogout,
       }}
     >
       {children}

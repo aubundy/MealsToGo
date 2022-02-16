@@ -17,7 +17,7 @@ import { AuthenticationContext } from "../../contexts/Authentication";
 export const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { handleLogin, error, isLoading } = useContext(AuthenticationContext);
+  const { onLogin, error, isLoading } = useContext(AuthenticationContext);
   return (
     <AccountBackground>
       <AccountCover />
@@ -51,7 +51,7 @@ export const Login = ({ navigation }) => {
             <AuthButton
               icon="lock-open-outline"
               mode="contained"
-              onPress={() => handleLogin(email, password)}
+              onPress={() => onLogin(email, password)}
             >
               Login
             </AuthButton>

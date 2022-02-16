@@ -10,7 +10,7 @@ export const LocationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleSearch = (searchKeyword) => {
+  const onSearch = (searchKeyword) => {
     setIsLoading(true);
     setKeyword(searchKeyword);
   };
@@ -39,7 +39,7 @@ export const LocationContextProvider = ({ children }) => {
         isLoading,
         error,
         location,
-        search: handleSearch,
+        search: onSearch,
         keyword,
       }}
     >

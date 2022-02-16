@@ -1,25 +1,53 @@
 import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import { StatusBar, StyleSheet, Text, SafeAreaView, View } from "react-native";
+import { ThemeProvider } from "styled-components/native";
+import firebase from "firebase/compat/app";
+
+import {
+  useFonts as useOswald,
+  Oswald_400Regular,
+} from "@expo-google-fonts/oswald";
+import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+
+import { theme } from "./src/utils/theme";
+import { Navigation } from "./src/utils/navigation";
+
+import { AuthenticationContextProvider } from "./src/contexts/Authentication";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD0Node4ZL7SE-QgTvY0bhWTi29J_ALsA0",
+  authDomain: "mealstogo-cb95b.firebaseapp.com",
+  projectId: "mealstogo-cb95b",
+  storageBucket: "mealstogo-cb95b.appspot.com",
+  messagingSenderId: "864831929907",
+  appId: "1:864831929907:web:6070043a6a7399bf4a6d46",
+};
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 export default function App() {
+  const [oswaldLoaded] = useOswald({
+    Oswald_400Regular,
+  });
+
+  const [latoLoaded] = useLato({
+    Lato_400Regular,
+  });
+
+  if (!oswaldLoaded || !latoLoaded) {
+    return null;
+  }
+
   return (
     <>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.search}>
-          <Text>search</Text>
-        </View>
-        <View style={styles.list}>
-          <Text>list</Text>
-        </View>
-      </SafeAreaView>
+      <ThemeProvider theme={theme}>
+        <AuthenticationContextProvider>
+          <Navigation />
+        </AuthenticationContextProvider>
+      </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, marginTop: StatusBar.currentHeight },
-  search: { padding: 16, backgroundColor: "green" },
-  list: { flex: 1, padding: 16, backgroundColor: "blue" },
-});

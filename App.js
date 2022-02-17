@@ -2,6 +2,11 @@ import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 import firebase from "firebase/compat/app";
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
+]);
 
 import {
   useFonts as useOswald,
